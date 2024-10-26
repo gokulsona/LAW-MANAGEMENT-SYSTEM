@@ -2,32 +2,102 @@
 
 {% load static %}
 
-{% block title %}Law | Login{% endblock  %}
+{% block title %}Law | Login{% endblock %}
 
 {% block content %}
-<form action="" method="post" class="form-evaluation">
-    {% csrf_token %}
-    <div class="wrap-evaluation">
-        <h5 class="title">Login</h5>
-        <div class="your-name mg-text">
-            <input type="text" class="your-name" name="username" placeholder="Your name">
-        </div>
-        <div class="your-phone mg-text">
-            <input type="password" class="your-phone" name="password" placeholder="Password">
-        </div>
+<style>
 
+    
+        .login-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 80vh; /* Full viewport height */
+            background-color: #f8f1e7; /* Light coffee background #f0c77d*/
+        }
+    
+        .wrap-evaluation {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 420px; /* Fixed width for the form */
+            text-align: center; /* Center text in the container */
+        }
+    
+        .title {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #4e3b31; /* Dark coffee color */
+        }
+    
+        .mg-text {
+            margin: 10px 0;
+            text-align: center; /* Center text for labels */
+        }
+    
+        input[type="text"],
+        input[type="password"] {
+            width: 100%; /* Full width */
+            padding: 12px;
+            border: 1px solid #d1b2a1; /* Light coffee border */
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            box-sizing: border-box; /* Ensures padding is included in width */
+        }
+    
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #7b5c4a; /* Darker coffee color on focus */
+            outline: none; /* Remove outline */
+        }
+    
+        button {
+            background-color: #4e3b31; /* Dark coffee button */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width */
+            font-size: 16px;
+            margin-top: 20px; /* Space above the button */
+            transition: background-color 0.3s;
+        }
+    
+        button:hover {
+            background-color: #211610; /* Even darker coffee color on hover */
+        }
+    
+        .alert {
+            margin-bottom: 20px; /* Space below alerts */
+        }
+    </style>
 
-        <div class="fl-btn">
-            <button class="hvr-vertical">Login</button>
-        </div>
-    </div>
-</form>
-{% for message in messages %}
-<script>
-    alert('{{ message }}');
-</script>
-{% endfor %}
-</div>
-
-
-{% endblock content %}
+    <div class="login-container">
+        <form action="" method="post" class="form-evaluation">
+            <div class="wrap-evaluation">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <h5 class="title">Login</h5>
+                <div class="your-name mg-text">
+                    <input type="text" class="your-name" name="username" placeholder="Your name" required>
+                </div>
+                <div class="your-phone mg-text">
+                    <input type="password" class="your-phone" name="password" placeholder="Password" required>
+                </div>
+                <div class="fl-btn">
+                    <button type="submit">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>{% endblock content %}
