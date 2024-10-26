@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import LawList, Lawyers, DetailLaw
 from django.contrib.auth.decorators import login_required
 from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.core.mail import send_mail
 from django.conf import settings
-
+from django.contrib import messages
+from . models import Cases
+from . forms import CaseForm, EditCaseForm
 # Create your views here.
 
 
@@ -78,3 +80,47 @@ def sendrequest(request, id):
 
 def court_details(request):
     return render(request, "court_details.html")
+
+
+#View Cases
+@login_required
+def case(request):
+    cases = Cases.objects.filter(created_by=request.user)
+    return render(request, 'case.html', {'cases': cases})
+
+
+@login_required
+def file_case(request):
+    if request.method == 'POST':
+        form = CaseForm(request.POST)
+        if form.is_valid():
+            case = form.save(commit=False)
+            case.created_by_id = request.user.id
+            case.save()
+            messages.success(request, 'Case File Submitted Successfully!')
+            return redirect('case')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = CaseForm()
+    return render(request, 'filecase.html', {'form':form})
+
+
+def delete_case(request, id):
+    case = Cases.objects.filter(id=id)
+    case.delete()
+    return redirect('case')
+
+
+#EditCase
+def edit_case(request, case_id):
+    cases = get_object_or_404(Cases, id=case_id)  # Fetch the case
+    if request.method == 'POST':
+        form = CaseForm(request.POST, instance=cases)
+        if form.is_valid():
+            form.save()  # Save the updated instance
+            return redirect('case')  # Redirect to a detail view or list
+    else:
+        form = CaseForm(instance=cases)  # Populate the form with current data
+
+    return render(request, 'editcase.html', {'form': form, 'cases': cases})

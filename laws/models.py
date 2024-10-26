@@ -53,3 +53,18 @@ class Court(models.Model):
         return self.court
 
 
+class Cases(models.Model):
+    created_by = models.ForeignKey(User, related_name='cases', on_delete=models.CASCADE)
+    case_title = models.CharField(max_length=255)
+    petitioner_name  = models.CharField(max_length=255)
+    petitioner_phn = models.CharField(max_length=10)
+    petitioner_email = models.CharField(max_length=50)
+    petitioner_address = models.TextField()
+    district = models.ForeignKey(CourtDistrict, on_delete=models.CASCADE)
+    court = models.ForeignKey(Court, on_delete=models.CASCADE)
+    case_date = models.DateField()
+    case_description = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.case_title 
