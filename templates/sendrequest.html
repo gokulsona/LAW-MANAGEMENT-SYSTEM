@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Law | Send Request {% endblock title %}
+
+
+{% block content %}
+
+<form action="" method="post" class="form-evaluation">
+    {% csrf_token %}
+    <div class="wrap-evaluation">
+        <h5 class="title">Make Your Appointment</h5>
+        <div class="your-name mg-text">
+            <input type="text" class="your-name" name="title" placeholder="Title of Email">
+        </div>
+        <div class="your-name mg-text">
+            <input type="text" class="your-name" name="email" placeholder="Enter Your Email">
+        </div>
+        <div class="your-name mg-text">
+            <input type="text" class="your-name" name="message" placeholder="Your Message">
+        </div>
+        <div class="fl-btn">
+            <button class="hvr-vertical">Send Request</button>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

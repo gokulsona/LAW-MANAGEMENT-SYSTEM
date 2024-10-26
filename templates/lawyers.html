@@ -1,0 +1,59 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Lawyers{% endblock title %}
+
+
+{% block content %}
+<style>
+.coffee-button {
+  background-color: #dba463; /* Coffee brown color */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none; /* Removes underline from link */
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+.coffee-button:hover {
+  background-color: #1c1206; /* Slightly darker coffee brown */
+}
+</style>
+<br>
+
+
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline" action="{% url 'searchlawyer' %}" method="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Lawyer" name="query" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <center>
+
+    <br>
+<div class="row row-cols-1 row-cols-md-3 g-4" >
+{% for lawyer in lawyers %}
+  <div class="col">
+    <div class="card">
+      <img src="{{ lawyer.image.url }}" class="card-img-top" alt=""/>
+      <div class="card-body">
+        <h5 class="card-title">Name  : {{ lawyer.name }}</h5>
+        <p class="card-text">Section : {{ lawyer.section }}</p>
+        <p class="card-text">Experience : {{ lawyer.experience }}Years</p>
+        <p class="card-text">Fees : {{ lawyer.fees }}/Seat</p>
+        
+        <a href="{% url 'sendrequest' lawyer.id %}" class="coffee-button">Request an Appointment</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}

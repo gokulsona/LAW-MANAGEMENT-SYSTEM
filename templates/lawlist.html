@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Family | Law{% endblock title %}
+
+{% block content %}
+<div class="center"><center><h2> <strong> Law Practices</strong></h2></center></div>
+<section class="practice-featured">
+    <div class="practice-area practice-area-style2">
+        <div class="container">
+
+            <div class="practice-area-wrap">
+                <div class="row">
+                    {% for law in lawlist %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="image-box-law">
+                            <div class="featured-post">
+                                <div class="entry-image">
+                                    <a href="#"><img src="{{ law.image.url }}" alt="{{ law.category }}"></a>
+                                </div>
+                                <div class="icon">
+                                    <img src="{{ law.icon.url }}" alt="images">
+                                </div>
+                            </div>
+                            <div class="content-law">
+                                <h4 class="name">{{ law.category }}</h4>
+                                <p class="description">{{ law.description }}</p>
+                                <a href="{% url 'detailaw' law.id %}">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            
+
+                    
+{% endblock content %}
+

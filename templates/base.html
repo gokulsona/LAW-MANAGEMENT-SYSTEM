@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <!-- Mobile Specific Metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="{% static 'stylesheet/bootstrap.css' %}">
+
+    <!-- Template Style-->
+    <link rel="stylesheet" href="{% static 'stylesheet/all.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheet/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheet/style.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheet/shortcodes.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheet/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheet/flexslider.css' %}">
+    <link rel="stylesheet" href="{% static 'rev-slider/css/layers.css' %}">
+    <link rel="stylesheet" href="{% static 'rev-slider/css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'rev-slider/css/settings.css' %}">
+
+    <link href="{% static 'icon/favicon.ico' %}" rel="shortcut icon">
+</head>
+
+<body class="counter-scroll">
+    <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <ul class="flat-information d-lg-flex align-items-center">
+                        <li class="email"><a href="#" title="Email">supremecourt@gmail.com</a></li>
+                        <li class="address"><a href="#" title="Address">Supreme Court, Delhi</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="flat-contact-us d-lg-flex align-items-center">
+                        <a href="#" class="phone">+912695893200</a>
+
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'user_profile' %}" class="cosulting hvr-vertical">Profile 
+                                <a href="{% url 'logout' %}" class="cosulting hvr-vertical">Logout                   
+                            {% else %}
+                                <a href="{% url 'register' %}" class="cosulting hvr-vertical">Register
+                                
+                                <a href="{% url 'login' %}" class="cosulting hvr-vertical">login
+                            {% endif %}
+                        
+                            <div class="border-animate">
+                                <div class="top"></div>
+                                <div class="right"></div>
+                                <div class="bottomb"></div>
+                                <div class="left"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- top-bar -->
+    <header id="header" class="header bg-color">
+        <div class="container">
+            <div class="flex-header">
+                <div id="logo" class="logo">
+                <a href="{% url 'home' %}" title="Logo"><img src="{% static 'images/logo/01.png' %}" data-width="51" data-height="14" alt="HomeLogo" data-retina="{% static 'images/logo/main_logo.jpg' %}"></a>
+                </div>
+                <div class="content-menu">
+                    <div class="nav-wrap">
+                        <div class="btn-menu"><span></span></div>
+                        <nav id="mainnav" class="mainnav">
+                            <ul class="menu">
+                                <li>
+                                    <a href="{% url 'home' %}" >Home</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="{% url 'about' %}">About</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="{% url 'lawlist' %}">Law</a>
+                                </li>
+                                <li>
+                                    <a href="{%  url 'lawyers' %}">Lawyers</a>
+                                <li>
+                                    <!--
+                                    <a href="#">Cases</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="case-results.html">Case results</a></li>
+                                        <li><a href="case-details.html">Case details</a></li>
+                                    </ul>
+                                </li>
+                                -->
+                                <li>
+                                    <a href="{% url "court_details" %}">Court</a>
+      
+                                </li>   
+                                <li>
+                                    <a href="#">Contact</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="faq.html">FAQ</a></li>
+                                    </ul>
+                                </li>                                       
+                            </ul>                                   
+                        </nav>
+                    </div>
+                    <!--
+                    <div class="flat-show-search">
+                        <div class="show-search">
+                            <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>                                             
+                        </div>   
+                        <div class="top-search">  
+                            <div>      
+                                          
+                                <form action="#" id="searchform-all" method="get">
+                                    <input type="text" id="s" class="ss" placeholder="Search...">
+                                    <button class="search-submit">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header><!-- header -->
+
+
+<!-- body -->
+
+   {% block content %}
+   
+   
+   
+   {% endblock content %}
+
+
+<!-- end body -->
+
+ 
+                <footer class=" bg-dark text-light fixed-bottom">
+                    <p class="text-center py-0 my-0">
+                      Copyright 2024 &copy; - All rights reserved
+                    </p>
+              </footer>
+                    
+    
+    <script src="{% static 'javascript/jquery.min.js' %}"></script>
+    <script src="{% static 'javascript/plugins.js' %}"></script>
+    <script src="{% static 'javascript/jquery-ui.js' %}"></script>
+    <script src="{% static 'javascript/gmap3.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_pcAdFNbTDCAvMwAD19oRTuEmb9M50c"></script>
+    <script src="{% static 'javascript/jquery-isotope.js' %}"></script>
+    <script src="{% static 'javascript/equalize.min.js' %}"></script>
+    <script src="{% static 'javascript/jquery-countTo.js' %}"></script>
+    <script src="{% static 'javascript/flex-slider.min.js' %}"></script>
+    <script src="{% static 'javascript/main.js' %}"></script>
+
+    <!-- slider -->
+    <script src="{% static 'rev-slider/js/jquery.themepunch.tools.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/jquery.themepunch.revolution.min.js' %}"></script>
+    <script src="{% static 'javascript/rev-slider.js' %}"></script>
+
+    <!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.actions.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.carousel.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.navigation.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.parallax.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js' %}"></script>
+    <script src="{% static 'rev-slider/js/extensions/extensionsrevolution.extension.video.min.js' %}"></script>
+</body>
+</html>

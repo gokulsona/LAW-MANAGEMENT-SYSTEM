@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Law | UserProfile{% endblock title %}
+
+{% block content %}
+<style>
+
+    .coffee-button {
+        background-color: #dba463; /* Coffee brown color */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none; /* Removes underline from link */
+        transition: background-color 0.3s ease; /* Smooth color transition */
+      }
+</style>
+
+<div class='container text-center'>
+    <br>
+<table border="1" class="table table-success table-striped">
+    <h1><center><u><b>Profile</u></b></center></h1><br>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+  </table>
+
+    <a href="{% url "edit_user_profile" user.id %}" class="coffee-button">Edit Profile</a>
+    </div>
+   
+
+{% endblock content %}

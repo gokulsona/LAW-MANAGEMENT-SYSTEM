@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Law | Login{% endblock  %}
+
+{% block content %}
+<form action="" method="post" class="form-evaluation">
+    {% csrf_token %}
+    <div class="wrap-evaluation">
+        <h5 class="title">Login</h5>
+        <div class="your-name mg-text">
+            <input type="text" class="your-name" name="username" placeholder="Your name">
+        </div>
+        <div class="your-phone mg-text">
+            <input type="password" class="your-phone" name="password" placeholder="Password">
+        </div>
+
+
+        <div class="fl-btn">
+            <button class="hvr-vertical">Login</button>
+        </div>
+    </div>
+</form>
+{% for message in messages %}
+<script>
+    alert('{{ message }}');
+</script>
+{% endfor %}
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Lawyers{% endblock title %}
+
+{% block content %}
+
+<br>
+
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline" action="{% url 'searchlawyer' %}" method="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Lawyer" name="query" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <center>
+
+{% if lawyers %}
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="width:320px" >     
+    {% for lawyer in lawyers %}
+    
+    <div class="col">
+        <div class="card">
+        <img src="{{ lawyer.image.url }}" class="card-img-top" alt=""/>
+        <div class="card-body">
+            <h5 class="card-title">Name  : {{ lawyer.name }}</h5>
+            <p class="card-text">Section : {{ lawyer.section }}</p>
+            <p class="card-text">Experience : {{ lawyer.experience }}Years</p>
+            <p class="card-text">Fees : {{ lawyer.fees }}/Seat</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+{% else %}
+<center>No results Found</center>
+{% endif %}
+
+
+
+{% endblock %}
