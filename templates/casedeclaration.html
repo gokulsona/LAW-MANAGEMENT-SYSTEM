@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law | Declaration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 750px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: left;
+            font-size: 16px;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            margin: 0 10px; /* Space between buttons */
+        }
+        .button.red {
+            background-color: #d9534f; /* Red */
+        }
+        .button.blue {
+            background-color: #5bc0de; /* Blue */
+        }
+        u {    
+            border-bottom: 3px dotted #0d0c0c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Declaration Form</h1>
+        <p>
+            I am <u class="u"><strong>{{ request.user }}</strong></u> hereby declare that my case <u class="u"><strong>{{ case.case_title }}</strong></u> happened on <u class="u"><strong>{{ case.case_date }}</strong></u> . 
+            So I am ready to attend the court session on <u class="u"><strong> 12-November-2024</strong> </u> at <u class="u"><strong>{{ case.court }}</u></strong>. 
+            I am willing to accept any actions that court takes on my case. I here by Confirm my Phone number <u class="u"><strong>{{ case.petitioner_phn }}</strong></u> , my email address <u class="u"><strong>{{ case.petitioner_email }}</strong></u> ,and my address <u class="u"><strong>{{ case.petitioner_address }}</strong></u> are correct as I provided to the Honourable Court.
+        </p>
+        <div class="button-container">
+            <button class="button red">Withdraw My Case</button>
+            
+        </div>
+    </div>
+</body>
+</html>

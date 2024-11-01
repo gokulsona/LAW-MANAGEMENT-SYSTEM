@@ -16,6 +16,7 @@ urlpatterns = [
    path('filecase/', views.file_case, name='filecase'),
    path('delete/<str:id>/', views.delete_case, name='delete_case'),
    path('edit/<str:case_id>/', views.edit_case, name='edit_case'),
+   path('casedeclaration/<str:id>/', views.case_declaration, name='casedeclaration'),
    
     
 ]

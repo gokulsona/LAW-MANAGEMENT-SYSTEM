@@ -124,3 +124,9 @@ def edit_case(request, case_id):
         form = CaseForm(instance=cases)  # Populate the form with current data
 
     return render(request, 'editcase.html', {'form': form, 'cases': cases})
+
+
+#case declaration form
+def case_declaration(request, id):
+    case = Cases.objects.get(id=id)
+    return render(request, 'casedeclaration.html', {'case':case})

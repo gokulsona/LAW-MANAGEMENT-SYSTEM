@@ -85,7 +85,7 @@
                     {% if case.is_approved == True %}
                      <td colspan="3">
                       <div class="alert alert-success" role="alert">
-                        Approved <a href="#" class="alert-link"><br>
+                        <a href="{% url 'casedeclaration' case.id %}" class="alert-link"> Approved </a><br>
                           
                       </div>
                       <small>Edit not Possible</small>
