@@ -62,7 +62,7 @@
     <div class="container">
         <h1>Declaration Form</h1>
         <p>
-            I am <u class="u"><strong>{{ request.user }}</strong></u> hereby declare that my case <u class="u"><strong>{{ case.case_title }}</strong></u> happened on <u class="u"><strong>{{ case.case_date }}</strong></u> . 
+            I am <u class="u"><strong>{{ request.user }}</strong></u> hereby declare that my case <u class="u"><strong>{{ case.case_title }}  </strong></u>  Case No :<u class="u"><strong> abc/25/{{ case.id }}</strong></u> happened on <u class="u"><strong>{{ case.case_date }}</strong></u> . 
             So I am ready to attend the court session on <u class="u"><strong> 12-November-2024</strong> </u> at <u class="u"><strong>{{ case.court }}</u></strong>. 
             I am willing to accept any actions that court takes on my case. I here by Confirm my Phone number <u class="u"><strong>{{ case.petitioner_phn }}</strong></u> , my email address <u class="u"><strong>{{ case.petitioner_email }}</strong></u> ,and my address <u class="u"><strong>{{ case.petitioner_address }}</strong></u> are correct as I provided to the Honourable Court.
         </p>
